@@ -9,6 +9,8 @@ import java.util.Random;
  */
 
 class ProgressTask {
+    public static boolean RUNNING = true;
+
     public static int startJob(ProgressBar pb) {
         int seconds = 1+new Random().nextInt(9);
         pb.setMax(seconds*10);
@@ -16,6 +18,8 @@ class ProgressTask {
         int progress = 0;
         for (int i = 0; i < seconds*10; i++) {
             try {
+                if(!RUNNING)
+                    return 0;
                 Thread.sleep(100);
                 pb.setProgress(++progress);
             } catch (InterruptedException e) {

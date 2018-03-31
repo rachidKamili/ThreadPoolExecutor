@@ -18,7 +18,7 @@ public class MyEventThread implements Runnable{
     @Override
     public void run() {
         int count = ProgressTask.startJob(pb);
-
+        pb.setProgress(count);
         pb.setVisibility(View.VISIBLE);
     }
 }
